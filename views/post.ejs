@@ -1,0 +1,159 @@
+<%- include("partials/header"); -%>
+
+    <div id="nextPage">
+        <a href="/posts/" class="btn btn-primary" role="button" data-bs-toggle="button">Next Page</a>
+    </div>
+
+    <h1>
+        <%=title%>
+    </h1>
+    <p>
+        <%-content%>
+    </p>
+
+
+
+    <div class="wrapper">
+        <p>Question. Let <span class="math inline"><em>â </em>= </span><span id="num1">-2</span> +<span
+                class="math inline"><span id="num2">4</span>
+                <em>ε</em></span> and <span class="math inline"><em>b̂ </em>=</span> <span id="num3">4</span>+ <span
+                id="num4">-3</span> <span class="math inline"><em>ε</em></span> be two dual numbers then <span
+                id="operation">addition</span>
+            of dual number will be a + εb
+        </p>
+
+        <p>Type answer in format a+𝛆b. Submit answer for 'a' and 'b'.</p>
+
+        <form class="form">
+            <label id="nameField">
+                <input type="text" name="nameField" placeholder="a" required />
+            </label>
+            <label id="nameField1">
+                <input type="text" name="nameField1" placeholder="b" required />
+            </label>
+            <input type="submit" value="submit" name="submit" />
+        </form>
+    </div>
+
+    <script>
+
+        const titleName = "<%=title%>";
+        // console.log(titleName);
+
+        // Get a reference to the form and the wrapper
+        const form = document.querySelector('.form');
+        const wrapper = document.querySelector('.wrapper');
+
+        // Check the title and toggle visibility accordingly
+        if (titleName === "Addition" || titleName === "Multiplication") {
+            form.style.display = "block"; // Show the form
+            wrapper.style.display = "block"; // Show the wrapper
+        } else {
+            form.style.display = "none"; // Hide the form
+            wrapper.style.display = "none"; // Hide the wrapper
+        }
+
+        const postArray = ["636be4f0a67ead1cf09c268e",
+            "636befbaa67ead1cf09c268f",
+            "636bf856a67ead1cf09c2690",
+            "636bf8dfa67ead1cf09c2691",
+            "636bf933a67ead1cf09c2692",
+            "636bf952a67ead1cf09c2693",
+            "636bf995a67ead1cf09c2694",
+            "636bf9dba67ead1cf09c2695",
+            "636bf9eaa67ead1cf09c2696",
+            "636bfa0da67ead1cf09c2697",
+            "636bfa2da67ead1cf09c2698"];
+
+        const currentURL = window.location.href;
+        const postID = currentURL.split('/').pop();
+        // console.log(postID);
+
+        const currentIndex = postArray.indexOf(postID);
+
+        if (currentIndex !== -1 && currentIndex < postArray.length - 1) {
+            const nextPostID = postArray[currentIndex + 1];
+            const nextPageLink = document.querySelector("#nextPage a");
+            nextPageLink.href = "/posts/" + nextPostID;
+            // console.log("Next Post ID:", nextPostID);
+        } else {
+            const nextPageLink = document.querySelector("#nextPage a");
+            nextPageLink.href = "/posts/" + "636be4f0a67ead1cf09c268e";
+            // console.log("No next post found. So, go to first page");
+        }
+
+        const htmlText1 = `${getRandomNumber()}`
+        const htmlText2 = `${getRandomNumber()}`
+        const htmlText3 = `${getRandomNumber()}`
+        const htmlText4 = `${getRandomNumber()}`
+        const htmlText5 = `${titleName}`
+
+
+        // Function to generate a random number between -10 and 10
+        function getRandomNumber() {
+            return Math.floor(Math.random() * 21) - 10; // Generates random number from -10 to 10
+        }
+
+        // Replace the HTML content with the modified content
+        document.getElementById("num1").innerHTML = htmlText1;
+        document.getElementById("num2").innerHTML = htmlText2;
+        document.getElementById("num3").innerHTML = htmlText3;
+        document.getElementById("num4").innerHTML = htmlText4;
+        document.getElementById("operation").innerHTML = htmlText5;
+
+        // console.log(htmlText1);
+        // console.log(htmlText2);
+        // console.log(htmlText3);
+        // console.log(htmlText4);
+        // console.log(htmlText5);
+
+        // Convert the text to numbers
+        const number1 = parseInt(htmlText1, 10);
+        const number2 = parseInt(htmlText2, 10);
+        const number3 = parseInt(htmlText3, 10);
+        const number4 = parseInt(htmlText4, 10);
+
+        let a11=0;
+        let a22=0;
+        if (htmlText5 === "Addition") {
+            a11 = number1 + number3;
+            a22 = number2 + number4;
+        } else {
+            a11 = number1 * number3;
+            a22 = (number1 * number4) + (number2 * number3);
+        }
+
+        // // Add the numbers
+        // const sum1 = number1 + number3;
+        // const sum2 = number2 + number4;
+
+        // console.log(a11);
+        // console.log(a22);
+
+
+        const wrapper1 = document.querySelector('.wrapper'),
+            form1 = wrapper1.querySelectorAll('.form'),
+            submitInput = form1[0].querySelector('input[type="submit"]');
+        function getDataForm(e) {
+            e.preventDefault();
+            var formData = new FormData(form1[0]);
+            var tempa11 = formData.get('nameField');
+            var tempa22 = formData.get('nameField1');
+
+            if (tempa11 == a11 && tempa22 == a22) {
+                alert('Correct!');
+            }
+            // if (tempa11 == (htmlText1+htmlText2) && tempa22 == a22) {
+            //     alert('Correct!');
+            // }
+            else {
+                alert('Incorrect, try again!');
+            }
+            // alert(formData.get('nameField') + ' - ' + formData.get('nameField1'));
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            submitInput.addEventListener('click', getDataForm, false);
+        }, false);
+    </script>
+
+    <%- include("partials/footer"); -%>

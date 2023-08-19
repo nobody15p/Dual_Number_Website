@@ -1,0 +1,75 @@
+<%- include("partials/header"); -%>
+
+  <!-- <h1>Home</h1>
+    <p> <%= startingContent %> </p> -->
+  <div class="dualNumberInfo">
+    <p style="font-size: 30px; color: #695133;"><strong>Definition</strong></p>
+    <p>Dual number was first introduced by W.K. Clifford in 1873 and name
+      was given by Study in 1903. Dual number concept has lots of
+      applications to screw systems, modelling plane joint, iterative methods
+      for displacement analysis of spatial mechanisms, inertial force analysis
+      of spatial mechanisms etc.</p>
+    <p>The dual number 𝛆 is defined such that: </p>
+    <p class="defDual"><span class="math inline"><em>ε</em><sup>2</sup></span>=0 and 𝛆≠0</p>
+    <p>A dual number in analogy with complex number is written as: </p>
+    <p class="defDual"><span class="math inline"><em>â</em></span>=a+𝛆*<span
+        class="math inline"><em>a</em><sub>0</sub></span></p>
+    <p>where symbol a represents the primary or real part of duplex or dual
+      number <span class="math inline"><em>â</em></span> and symbol <span
+        class="math inline"><em>a</em><sub>0</sub></span> represents the dual
+      component of dual number <span class="math inline"><em>â</em></span>.</p>
+  </div>
+
+  <div class="dualNumberInfo2">
+    <p><hr>Dual numbers, unlike complex numbers, illustrate Galileo's invariance
+      principle. The infinitesimal part of a dual number represents the
+      velocity. The multiplication of dual numbers is actually equivalent
+      to a scaling and <em>shear</em> mapping of plane,
+      since (1+pε)(1+qε)=1+(p+q)ε(1+pε)(1+qε)=1+(p+q)ε.</p>
+    <p>A commutative ring R is said to be a general dual number commutative
+      ring if every element in R is of the form a + bε where a, b ∈ R and ε is
+      a new element such that <span class="math inline"><em>ε</em><sup>2</sup></span> = 0 and this ε is
+      unique and ε ≠ 0.</p>
+  </div>
+
+  <div class="dualNumberInfo3">
+    <p style="text-decoration: underline;"><hr>Dual numbers can be represented as follows:</p>
+    <ul>
+      <li>
+        <p>Gaussian representation: <span class="math inline"><em>â</em></span> ≡ a + ε<span
+            class="math inline"><em>a</em><sub>0</sub></span>.</p>
+      </li>
+      <li>
+        <p>Polar representation: <span class="math inline"><em>â</em></span>
+          ≡ ρ(1 + εt), where ρ = a and t = a<sub>0</sub>/a.</p>
+      </li>
+      <li>
+        <p>Exponential representation: <span class="math inline">
+            <em>â</em> ≡ <em>ρ</em><em>e</em><sup><em>ε</em><em>t</em></sup></span>
+          , where ρ = a, t = a<sub>0</sub>/a and <span
+            class="math inline"><em>e</em><sup><em>ε</em><em>t</em></sup> = 1 + <em>ε</em><em>t</em></span>.</p>
+      </li>
+    </ul>
+    <p>The adoption of one representation instead of another depends on the
+      context.</p>
+    <p>Dual algebra is used for rigid body motion analysis, displacement
+      analysis, kinematic synthesis and dynamic analysis of spatial
+      mechanisms, robotics, human body motion analysis.</p>
+  </div>
+
+  <% posts.forEach(function(post){ %>
+
+    <h2 class="homePost">
+      <hr>
+      <%=post.title%>
+    </h2>
+    <p>
+      <%-post.content.substring(0, 100) + " ..." %>
+        <a href="/posts/<%=post._id%>">Read More</a>
+    </p>
+
+
+    <% }) %>
+
+    <p><hr>For more information please read <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781315141473/dual-number-methods-kinematics-statics-dynamics-ian-fischer">Dual Number by Ian Fischer</a> Book. Thank you. </p>
+      <%- include("partials/footer"); -%>

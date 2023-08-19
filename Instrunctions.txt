@@ -1,0 +1,10 @@
+Go to the address bar and type cmd
+then in cmd type node app.js
+
+If any error occurs, connect mongoDB compass
+If an error occur in compass go to services in task manager and start MongoDB 
+
+
+Then after localhost:3000 message in command prompt 
+
+Now open localhost:3000 in edge browser

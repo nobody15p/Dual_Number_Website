@@ -43,7 +43,7 @@ const Post = mongoose.model("Post", postSchema);
 app.get("/", async function (req, res) {
 
   let posts = await Post.find({});
-  console.log(posts);
+  // console.log(posts);
   res.render("home", {
       startingContent: homeStartingContent,
       posts: posts
